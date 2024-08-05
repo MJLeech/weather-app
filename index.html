@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whether The Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
+    rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body class="flex-col-wrap h-screen w-screen">
+    <nav class="h-16 w-screen bg-blue-100 flex justify-end border-b-2 border-solid border-green-200"><h1 class ="content-center mr-5 color text-green-500">Weather Dashboard</h1></nav>
+    <div class ="flex">
+        <div class ="flex-col-rev h-screen w-64 mr-1 border-r-2 border-green-200">
+    <form class =" ml-1 flex-row-wrap ">
+        <H2 class="mt-2">Enter your city:<H2>
+        <input class="rounded-3xl border-solid border-black w-63 p-2 mt-5 border-2" >
+        <button class ="w-60 mt-5 rounded-3xl bg-green-200 border-2 border-blue-200">Search</button>
+    </form>
+    <div class="w-63 h-96 border-2 border-blue-200"></div>
+       </div>
+        <div class="w-screen h-screen">
+            <h2>Showing results for <span id="result-text"></span></h2>
+            <div></div>
+          </div>
+          </div>
+    
+      <script src="./assets/js/script.js"></script>
+  </body>
