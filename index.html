@@ -10,56 +10,61 @@
     <script src="https://cdn.tailwindcss.com"></script> 
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body class="flex-col-wrap h-full w-full">
-    <nav class="h-16 w-full bg-blue-100 flex justify-end border-b-2 border-solid border-green-200"><h1 class ="content-center mr-5 color text-green-500">Weather Dashboard</h1></nav>
+  <body class="flex-col-wrap h-full w-full bg-blue-100">
+    <nav class="h-16 w-full bg-blue-300 flex justify-end border-b-4 border-solid border-green-300 font-extrabold"><h1 class =" flex content-center p-1 mt-3 mb-2 mr-5 text-xl  color text-blue-500 rounded-3xl bg-green-200 border-2 border-black w-60 justify-center">      Weather Dashboard</h1></nav>
     <div class ="flex w-full">
-        <div class ="flex-col-rev h-screen w-64 mr-1 border-r-2 border-green-200">
+        <div class ="flex-col-rev h-screen w-64 mr-1">
     <form class =" ml-1 flex-row-wrap ">
-        <H2 class="mt-2">Enter your city:<H2>
-        <input id="input1" class="rounded-3xl border-solid border-black w-63 p-2 mt-5 border-2" >
-        <button id="searchBut" class ="w-60 mt-5 mb-2 rounded-3xl bg-green-200 border-2 border-blue-200">Search</button>
+        <H2 class="mt-3 ml-10 font-extrabold text-blue-500">Please enter your city:<H2>
+        <input id="input1" class="rounded-3xl border-solid border-black w-64 p-2 mt-2 border-2" >
+        <button id="searchBut" class ="w-64 mt-3 mb-2 rounded-3xl bg-blue-200 border-2 border-black text-green-500 font-extrabold">Search</button>
     </form>
-    <ul id="searchHist" class="w-62 h-full border-2 border-blue-200">
-     
+    <ul id="searchHist" class="w-64 h-80 space-y-5 j border-2 border-black bg-green-200 rounded-lg">
+     <button id = "recent" class=" ml-20 mt-3 text-lg text-blue-500 font-extrabold"" >example</button>
+     <button id = "recent" class=" ml-20 text-lg text-blue-500 font-extrabold"" >example</button>
+     <button id = "recent" class=" ml-20 text-lg text-blue-500 font-extrabold"" >example</button>
+     <button id = "recent" class=" ml-20 text-lg text-blue-500 font-extrabold"" >example</button>
+     <button id = "recent" class=" ml-20 text-lg text-blue-500 font-extrabold"" >example</button>
+     <button id = "recent" class=" ml-20 text-lg text-blue-500 font-extrabold"" >example</button>
     </ul>
        </div>
         <div class="w-8/12 h-screen">
-            <div class="w-full h-60 border-2 border-black m-1">
-            <h1 id="locDay" class="p-2 mt-2">please enter a city to view results!</h1>
-            <p id="temp"class="p-2"></p>
-            <p id="wind"class="p-2"></p>
-            <p id="humid"class="p-2"></p>
+            <div class="w-full h-60 border-2 border-black m-1 bg-green-200 rounded-xl">
+            <h1 id="locDay" class="p-2 mt-2 text-xl text-blue-500 font-extrabold">please enter a city to view results!</h1>
+            <p id="temp"class="p-2 text-blue-600"></p>
+            <p id="wind"class="p-2 text-blue-600"></p>
+            <p id="humid"class="p-2 text-blue-600"></p>
             </div>
-            <div id="fiveday" class ="flex row w-full h-60 border-2 border-black m-1">
-                <Div id="day1" class ="w-full h-60 border-2 border-black">
+            <div id="fiveday" class ="flex row w-full h-60 border-1 border-black m-1 bg space-x-1">
+                <Div id="day1" class ="font-extrabold text-green-600 w-full h-60 border-2 border-black rounded-lg bg-blue-300">
                     <h3 id ="1date"class ="p-1 mt-7"></h3>
                     <p id="1temp"class="p-1"></p>
                     <p id="1wind"class="p-1"></p>
                     <p id="1humid"class="p-1"></p>
                 </Div>
-                <Div id="day2" class ="w-full h-60 border-2 border-black">
+                <Div id="day2" class ="font-extrabold text-blue-600 w-full h-60 border-2 border-black bg-green-300 rounded-lg">
                     <h3 id ="2date"class ="p-1 mt-7"></h3>
                     <p id="2temp"class="p-1"></p>
                     <p id="2wind"class="p-1"></p>
                     <p id="2humid"class="p-1"></p>
                 </Div>
-                <Div id="day3" class ="w-full h-60 border-2 border-black">
+                <Div id="day3" class ="font-extrabold text-green-600 w-full h-60 border-2 border-black bg-blue-300 rounded-lg">
                     <h3 id ="3date"class ="p-1 mt-7"></h3>
                     <p id="3temp"class="p-1"></p>
                     <p id="3wind"class="p-1"></p>
                     <p id="3humid"class="p-1"></p>
                 </Div>
-                <Div id="day4" class ="w-full h-60 border-2 border-black">
+                <Div id="day4" class ="text-blue-600 font-extrabold w-full h-60 border-2 border-black bg-green-300 rounded-lg">
                     <h3 id ="4date"class ="p-1 mt-7"></h3>
                     <p id="4temp"class="p-1"></p>
                     <p id="4wind"class="p-1"></p>
                     <p id="4humid"class="p-1"></p>
                 </Div>
-                <Div id="day5" class ="w-full h-60 border-2 border-black">
-                    <h3 id ="5date"class ="p-1 mt-7">wed aug 07 2024</h3>
-                    <p id="5temp"class="p-1">Temperature: 652.3</p>
-                    <p id="5wind"class="p-1">Wind: 5.57 Mph</p>
-                    <p id="5humid"class="p-1">Temperature: 65.3</p>
+                <Div id="day5" class ="text-green-600 font-extrabold w-full h-60 border-2 border-black bg-blue-300 rounded-lg">
+                    <h3 id ="5date"class ="p-1 mt-7"></h3>
+                    <p id="5temp"class="p-1"></p>
+                    <p id="5wind"class="p-1"></p>
+                    <p id="5humid"class="p-1"></p>
                 </Div>
       
             </div>

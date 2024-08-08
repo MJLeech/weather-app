@@ -8,15 +8,20 @@ const locDay = document.getElementById('locDay');
 const tempDiv = document.getElementById('temp');
 const windDiv = document.getElementById('wind');
 const humidDiv = document.getElementById('humid');
-const apiKey = "8ee239f6dc48e439a334d7769d0ad502"
+const apiKey = "8ee239f6dc48e439a334d7769d0ad502"//idk about this ill make a new one if something happens to it
 const currentDate = new Date().toDateString();
+const recent = document.getElementById('recent')
 console.log(currentDate)
 
 function handleSearchFormSubmit(event) {
   event.preventDefault();
   const userInput = input1.value
+  localStorage.setItem(grimbus,userInput)
   getCurrentWeather(userInput)
+  if(localStorage.grimbus)
+    
 };
+
 async function getCurrentWeather(city) {// this function retreives the data from openweathermap as a json
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
   const response = await fetch(url)
@@ -42,7 +47,7 @@ getForcast(lat,lon)
 }
 async function getForcast(lat,lon) {
   await lon 
- const url =  `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=standard`
+ const url =  `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
  const response = await fetch(url)
  const data = await response.json()
  console.log(data)
@@ -54,27 +59,32 @@ async function getForcast(lat,lon) {
   let humid =document.getElementById(`${[i]}humid`)
   // let grimbus = [day,date,temp,wind,humid]
   const list = data.list
-  const iList = list[i]; 
-  console.log(iList)
-  const main = iList.main
+  // const iList = list[i]; 
+  console.log(list)
+  let scrubed = hourToDaily(list)
+  console.log(scrubed)
+  const scrubbed = scrubed[i] 
+  const main = scrubbed.main
+  console.log(main)
   const forTemp = main.temp
   const forHumid = main.humidity
-const forWind = iList.wind
+const forWind = scrubbed.wind
   const windSpeed = forWind.speed
-  const forDate = iList.dt_txt
+  const forDate = scrubbed.dt_txt
   console.log(forDate)
   // day.textContent = 
   forcastDate =dateCleanup(forDate);
   date.textContent =forcastDate;
-  temp.textContent =forTemp;
-  wind.textContent= windSpeed;
-  humid.textContent= forHumid;
+  temp.textContent =`Temp: ${forTemp}°F`;
+  wind.textContent= `Wind: ${windSpeed} mph`;
+  humid.textContent= `Humidity: ${forHumid}%`;
   // console.log(grimbus)
   
  }
  return;
 }
 searchBut.addEventListener('click',handleSearchFormSubmit);
+// history.addEventListener('click',handleSearchFormSubmit)
 // console.log( cleanupFilename("Fashion_Yellow_Beach.jpg") );
 // console.log( cleanupFilename("Architecture_On_a_hill.jpg") );
 
@@ -91,3 +101,12 @@ const dateCleanup =(string)=>{
   const retString =array.join()
   return retString;
 } 
+const hourToDaily =(array)=>{
+  const newArray = ["ik i could change the names of the ids to 0-4 but i dont feel like it"];
+for (let i = 2; i < 41; i+=8) {
+  const day = array[i];
+  newArray.push(day) 
+}
+  return newArray;
+} 
+ 
