@@ -19,16 +19,16 @@ const shButton = document.getElementsByClassName("lebutton")
 console.log(currentDate)
 const bing =localStorage.getItem("cityArray")
 
-if (bing !== null){
-  const woah =bing.split(',');
-let huh = [woah]
-localStorage.setItem("cityArray", huh)
-console.log(huh)
-} else{
-let huh =[]
-localStorage.setItem("cityArray",huh)
-console.log(huh)
-}
+// if (bing !== null){
+//   const woah =bing.split(',');
+// let huh = [woah]
+// localStorage.setItem("cityArray",JSON.stringify(huh))
+// console.log(huh)
+// } else{
+// let huh =[]
+// localStorage.setItem("cityArray",JSON.stringify(huh))
+// console.log(huh)
+// }
 
 function searchHistoryButton(event){
   event.preventDefault();
@@ -54,14 +54,14 @@ function searchHistoryButton2(event){
 }
 function searchHistoryButton3(event){
   event.preventDefault();
-  let grimbus = localStorage.getItem(cityArray)
+  let grimbus = localStorage.getItem("cityArray")
   let babydor =grimbus.split(',')
 let city = babydor[3]
   getCurrentWeather(city)
 }
 function searchHistoryButton4(event){
   event.preventDefault();
-  let grimbus = localStorage.getItem(cityArray)
+  let grimbus = localStorage.getItem("cityArray")
   let babydor =grimbus.split(',')
 let city = babydor[4]
   getCurrentWeather(city)
@@ -70,41 +70,45 @@ let city = babydor[4]
 function handleSearchFormSubmit(event) {
   event.preventDefault();
   const userInput = input1.value
-  const letMeGo = localStorage.getItem("cityArray")
-  huh = letMeGo.split(',')
-  console.log(huh)
   getCurrentWeather(userInput)
+  // localStorage.setItem("cityArray", userInput)
+  const huh = localStorage.getItem("cityArray", userInput)
   console.log(huh)
-  if(userInput && huh.length < 5 && huh){
-    killMe =huh.split(',')
-    killMe.push(userInput)
-    console.log(killMe)
-    localStorage.setItem("cityArray",killMe)
+  if(huh){
+  let cityArray = huh.split(',')
+  console.log(cityArray)
+  if(userInput && cityArray.length < 5){
+    cityArray.push(userInput)
+    let strArray =cityArray.join(',')
+    console.log(cityArray)
+    console.log("if")
+    localStorage.setItem("cityArray",strArray)
     
-   } else if(userInput && huh.length === 5) {
-    huh.shift()
-    huh.push(userInput)
-    console.log(huh)
-    localStorage.setItem("cityArray",huh)
-    }
-  else if(huh[0] == '')
-    localStorage.clear("cityArray")
-     const losingmyshit = [userInput]
-    localStorage.setItem("cityArray",losingmyshit)
-    }
-;
+   } else if(userInput && cityArray.length === 5) {
+    cityArray.shift()
+    cityArray.push(userInput)
+    cityArray.join(',')
+    console.log(cityArray)
+    console.log("else if")
+    console.log(JSON.stringify(cityArray))
+    localStorage.setItem("cityArray",cityArray)
+    }}else{
+     localStorage.setItem("cityArray",userInput) 
+    }}
 
-// const globalArrayStr = localStorage.getItem("cityArray")
-// console.log(globalArrayStr)
-// if(globalArrayStr){
-// const globalArray = globalArrayStr.split(',')
-// console.log(globalArray)
-// recent.textContent = globalArray[0] 
-// recent1.textContent = globalArray[1] 
-// recent2.textContent = globalArray[2] 
-// recent3.textContent = globalArray[3] 
-// recent4.textContent = globalArray[4] 
-// }
+    ;
+
+const globalArrayStr = localStorage.getItem("cityArray")
+console.log(globalArrayStr)
+if(globalArrayStr){
+const globalArray = globalArrayStr.split(',')
+console.log(globalArray)
+recent.textContent = globalArray[0] 
+recent1.textContent = globalArray[1] 
+recent2.textContent = globalArray[2] 
+recent3.textContent = globalArray[3] 
+recent4.textContent = globalArray[4] 
+}
 async function getCurrentWeather(city) {// this function retreives the data from openweathermap as a json
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
   const response = await fetch(url)
